@@ -10,7 +10,7 @@ public class RepositoryAPI {
     private final Map<String, Dog> puppyStorage;
 
     public RepositoryAPI() {
-        puppyStorage = new HashMap<String, Dog>();
+        puppyStorage = new HashMap<>();
         puppyStorage.put("1", new Dog("1", "Big", "Great Dane", "2023-01-01"));
         puppyStorage.put("2", new Dog("2", "Small", "Chihuahua", "2023-01-01"));
     }

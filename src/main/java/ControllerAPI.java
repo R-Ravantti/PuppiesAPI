@@ -26,14 +26,22 @@ public class ControllerAPI {
 
     @PostMapping
     public ResponseEntity<DogDTO> addPuppy(@RequestBody DogDTO dto, HttpServletRequest req) {
+        DogDTO dogDto = service.addPuppy(dto);
+        if(dogDto == null) {
+            return ResponseEntity.badRequest().build();
+        }
         URI location = URI.create((req.getRequestURL() + "/" + dto.id())
                 .replace("puppies//", "puppies/"));
-        return ResponseEntity.created(location).body(service.addPuppy(dto));
+        return ResponseEntity.created(location).body(dogDto);
     }
 
     @PutMapping(path = "{id}")
     public ResponseEntity<DogDTO> updatePuppy(@PathVariable String id, @RequestBody DogDTO dto) {
-        return ResponseEntity.accepted().body(service.updatePuppy(dto));
+        DogDTO dogDto = service.updatePuppy(dto);
+        if(dogDto == null) {
+            return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.accepted().body(dogDto);
     }
 
     @DeleteMapping(path = "{id}")

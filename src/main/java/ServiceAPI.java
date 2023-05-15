@@ -25,11 +25,18 @@ public class ServiceAPI {
     }
 
     public DogDTO addPuppy(DogDTO dto) {
+        Dog existingDog = repo.findPuppy(dto.id());
+        if (existingDog != null) {
+            return null;
+        }
         Dog dog = repo.addPuppy(convertDTO(dto));
         return convertDog(dog);
     }
 
     public DogDTO updatePuppy(DogDTO dto) {
+        if (dto.id() == null || dto.name() == null || dto.breed() == null || dto.birthdate() == null) {
+            return null;
+        }
         Dog dog = repo.updatePuppy(convertDTO(dto));
         return convertDog(dog);
     }
