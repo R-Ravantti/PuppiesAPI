@@ -1,3 +1,5 @@
+package org.rravanttipgp;
+
 public class Dog {
     private String id;
 

@@ -1,3 +1,5 @@
+package org.rravanttipgp;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record DogDTO(@JsonProperty String id, @JsonProperty String name,
